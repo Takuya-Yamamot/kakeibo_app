@@ -1,0 +1,26 @@
+<h1>家計簿</h1>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 1%>
+    <% @accounts.each do |account| %>
+        <% while i <= 12 %>
+            <% if account.date.month === i%>
+                <p>#{i}月</p>
+                    <tr>
+                        <td><%= account.date %></td>
+                        <td><%= account.place %></td>
+                        <td><%= account.price %></td>
+                        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+                        <td><%= link_to 'Delete', account_path(account), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+                    </tr>
+            <% end %>
+        <% end%>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', accounts_path%>

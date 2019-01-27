@@ -1,0 +1,21 @@
+<h1>家計簿</h1>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.date %></td>
+        <td><%= account.place %></td>
+        <td><%= account.price %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Delete', account_path(account), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add', new_account_path%>
+<%= link_to 'Go', '/accounts/show'%>

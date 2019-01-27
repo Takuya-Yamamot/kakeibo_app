@@ -1,0 +1,19 @@
+<h1>家計簿</h1>
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.date %></td>
+        <td><%= account.place %></td>
+        <td><%= account.price %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add', new_account_path%>
